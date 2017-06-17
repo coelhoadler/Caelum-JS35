@@ -1,10 +1,17 @@
 const express = require("express");
 const app = express();
+const load = require("express-load");
+const bodyParser = require("body-parser");
 
-  app.set("view engine", "ejs");
-
+module.exports = function() {
+  app.set("view engine", "ejs")
   app.use(express.static('./public'));
+  app.use(bodyParser.urlencoded());
 
-  require("./routes/produtos")(app);
+  load('routes')
+    .then('dao')
+    .then('infra')
+    .into(app);
 
-module.exports = app;
+    return app;
+};

@@ -1,4 +1,4 @@
-const express = require("./custom-express");
+const express = require("./custom-express")();
 const port = 3000;
 
 express.listen(port, () => {

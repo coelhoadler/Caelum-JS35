@@ -12,4 +12,6 @@ function createConn() {
     return mysql.createConnection(options);
 }
 
-module.exports = createConn;
+module.exports = function() {
+  return createConn;
+}
