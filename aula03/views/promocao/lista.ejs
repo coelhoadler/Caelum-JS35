@@ -1,0 +1,28 @@
+<% include ../includes/header.ejs %>
+
+    <!-- FINAL NAV -->
+    <div>
+        <div class ="container min-container">
+            <h2 class="basic-title">Listagem de Promocoes</h2>
+            <div class="well">
+                <table class="table table-condensed table-bordered table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <td><a href="">Título</a></td>
+                        <td><a href="">Desc. Promocao</a></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <% for (let i = 0 ; i < lista.length; i++) { %>
+                        <tr>
+                            <td><%=lista[i].titulo%></td>
+                            <td><%=lista[i].descricao%></td>
+                        </tr>
+                      <% } %>
+                    </tbody>
+                </table>
+                <a href="/promocao/form" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Novo promocao</a>
+            </div>
+        </div>
+    </div>
+<% include ../includes/footer.ejs %>
