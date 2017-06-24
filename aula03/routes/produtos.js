@@ -33,7 +33,7 @@ module.exports = function(app) {
     let produtoDAO = new app.dao.ProdutoDAO(connection);
 
     req.assert('titulo', 'O campo nao pode ser vazio.').notEmpty();
-    req.assert('preco', 'Preco dever ser um numero.').isFloat();
+    req.assert('preco', 'Preco dever ser um numero.').eFloat();
     const erros = req.validationErrors();
 
     if (erros) {

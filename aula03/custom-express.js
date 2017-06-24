@@ -9,7 +9,13 @@ module.exports = function() {
   app.use(express.static('./public'));
   app.use(bodyParser.urlencoded({extended : true}));
   app.use(bodyParser.json()); // permite enviarmos JSON no post
-  app.use(expressValidator());
+  app.use(expressValidator({
+    customValidators : {
+      eFloat : function(value) {
+        return Number(value) === value && value % 1 !== 0;
+      }
+    }
+  }));
 
   load('routes')
     .then('dao')
