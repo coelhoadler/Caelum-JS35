@@ -1,6 +1,15 @@
-const express = require("express")()
-  .set("view engine", "ejs");
+const express = require("express");
+const app = express();
+const load = require("express-load");
 
-require("./routes/produtos")(express);
+module.exports = function() {
+  app.set("view engine", "ejs")
+  app.use(express.static('./public'));
 
-module.exports = express;
+  load('routes')
+    .then('dao')
+    .then('infra')
+    .into(app);
+
+    return app;
+};
