@@ -1,0 +1,37 @@
+<% include ../includes/header.ejs %>
+
+<div>
+    <div class ="container min-container">
+      <% if (locals.erros) { %>
+        <ul class="list-unstyle">
+        <% erros.forEach( (erro) => { %>
+          <li class="alert alert-danger"><%= erro.msg %></li>
+        <% }) %>
+        </ul>
+      <% } %>
+
+        <h2 class="basic-title">Inserir Promocao</h2>
+
+        <form action="/promocoes" method="post" class="well" role="form">
+            <div class="form-group">
+                <label for="titulo">Livro</label>
+                <div class="input-group">
+                    <select name="promocao[titulo]">
+                        <% livros.forEach((livro) => { %>
+                          <<option value="<%= livro.titulo%>"><%= livro.titulo%></option>
+                        <% }) %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="preco">Descricao</label>
+                <div class="input-group">
+                    <input type="text" name="preco" placeholder="Descricao da promocao"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+<% include ../includes/footer.ejs %>
